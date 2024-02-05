@@ -1,12 +1,10 @@
 name: Github Actions
 
-on: # yamllint disable-line rule:truthy
-  pull_request:
-    branches:
-      - main
+on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
   workflow_dispatch:
     inputs:
@@ -39,7 +37,7 @@ jobs:
         shell: bash
         run: |
           echo "STEP 1 ) Downloading sample suite"
-          git clone ${{ github.event.inputs.sampleRepoLink }}
+          git clone https://github.com/SparshKesari/testng-selenium-project.git
           echo "STEP 2) Download CLI and setting environment variables"
           cd testng-selenium-hyperexecute-sample
           curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
